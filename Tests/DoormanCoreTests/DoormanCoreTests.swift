@@ -159,7 +159,7 @@ final class ConfigTests: XCTestCase {
         try? FileManager.default.removeItem(at: dir)
     }
 
-    func testReadsElectronConfigAndRoundTrips() throws {
+    func testReadsMinimalConfigAndRoundTrips() throws {
         let file = dir.appendingPathComponent("handlers.json")
         try """
         {

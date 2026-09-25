@@ -15,8 +15,7 @@ public enum PickerPlacement: String, Codable, CaseIterable, Sendable {
     case pointer
 }
 
-/// Everything in handlers.json. The format is shared with the Electron build,
-/// so either can read what the other wrote.
+/// Everything in handlers.json.
 public struct ConfigData: Codable, Equatable, Sendable {
     public var handlers: [Handler]
     public var rules: [String: String]

@@ -1,15 +1,12 @@
-# Doorman (native)
+# Doorman
 
-A Swift + SwiftUI port of Doorman. It behaves the same as the Electron app in
-the parent directory — the picker, keyboard shortcuts, saved domains, private
-windows, Recent, doorbell, login item and favicon cache — as a 1.6 MB native app
-instead of a bundled Chromium.
+A 1.6 MB native Swift + SwiftUI app: a picker for choosing which browser (or
+browser profile) opens a link, with keyboard shortcuts, saved domains, private
+windows, Recent, a doorbell, a login item and a favicon cache.
 
-It reads and writes the same
-`~/Library/Application Support/Doorman/handlers.json` and `favicons/` folder, so
-switching between the two builds keeps your handlers and saved domains. It also
-uses the same bundle id (`com.ewilliams.doorman`), so installing it replaces the
-Electron `/Applications/Doorman.app`.
+It reads and writes
+`~/Library/Application Support/Doorman/handlers.json` and a `favicons/` folder,
+under the bundle id `com.ewilliams.doorman`.
 
 ## Build
 
@@ -55,13 +52,13 @@ the `build.sh` bundle. ⌘U runs the DoormanCore tests.
 
 ```bash
 swift build
-swift test                                         # DoormanCore unit tests
-.build/debug/Doorman https://example.com/some/path  # links on argv, like npm run dev
+swift test                                          # DoormanCore unit tests
+.build/debug/Doorman https://example.com/some/path  # links passed on argv
 ```
 
-A bare `swift run` / `.build/debug/Doorman` isn't an app bundle, so, like
-`npm start`, it can't become the default browser or a login item. It always
-shows the picker on launch.
+A bare `swift run` / `.build/debug/Doorman` isn't an app bundle, so it can't
+become the default browser or a login item. It always shows the picker on
+launch.
 
 Set `DOORMAN_SUPPORT_DIR` to point a run at a scratch settings folder instead
 of your real one:
@@ -75,7 +72,7 @@ DOORMAN_SUPPORT_DIR=/tmp/doorman-test .build/debug/Doorman https://example.com
 | Path | What |
 | --- | --- |
 | `Sources/DoormanCore/` | No AppKit: `handlers.json` model and I/O, domain rules, browser/profile discovery, favicon HTML and byte sniffing. Covered by `Tests/`. |
-| `Sources/Doorman/AppModel.swift` | The link queue, rules routing, launching, settings actions and keyboard handling — `main.js` plus the renderer's logic. |
+| `Sources/Doorman/AppModel.swift` | The link queue, rules routing, launching, settings actions and keyboard handling. |
 | `Sources/Doorman/AppDelegate.swift` | Launch, GetURL Apple events, main menu, and the key monitor that gives the picker its shortcuts. |
 | `Sources/Doorman/PickerWindowController.swift` | The one window: placement near the cursor, height that follows the content, hide-not-close. |
 | `Sources/Doorman/StatusItemController.swift` | Menu bar icon and its Recent menu. |
@@ -90,7 +87,7 @@ DOORMAN_SUPPORT_DIR=/tmp/doorman-test .build/debug/Doorman https://example.com
 | `Resources/` | `Info.plist` (http/https URL types, the Services entry) and the app icon. |
 | `Doorman.xcodeproj/` | The Xcode project: the app target, its test target and the shared scheme. |
 
-## Differences from the Electron build
+## Notes
 
 - Links arrive as GetURL Apple events. There's no single-instance lock, because
   LaunchServices already runs only one copy of an app bundle.
@@ -115,7 +112,7 @@ DOORMAN_SUPPORT_DIR=/tmp/doorman-test .build/debug/Doorman https://example.com
     you clicked in, a third of the way down. The window's position comes from
     the system window list, which needs no extra permission. If there's no
     window, it centers on the screen.
-  - **Centered on the screen**, as the Electron build did.
+  - **Centered on the screen**, a third of the way down.
   - **At the pointer**, with the pointer over its title strip so a stray second
     click can't choose a handler.
 
@@ -143,8 +140,7 @@ DOORMAN_SUPPORT_DIR=/tmp/doorman-test .build/debug/Doorman https://example.com
   so helper processes count as their app. For a command-line sender, it's traced
   up through parent processes to the terminal. A sender that exits before
   Doorman looks, like a bare `open` command, shows no source. Stored as
-  `"sourceRules"` (bundle id → handler id) in `handlers.json`; the Electron
-  build ignores and drops it.
+  `"sourceRules"` (bundle id → handler id) in `handlers.json`.
 - Handlers show the app they open instead of a plain color dot. A Chromium
   profile that's signed in shows its account photo, ringed in the handler's
   color, with a small browser badge. Otherwise the browser's icon carries a dot
@@ -157,7 +153,5 @@ DOORMAN_SUPPORT_DIR=/tmp/doorman-test .build/debug/Doorman https://example.com
   for the session and never written to disk. A globe stands in until it loads,
   or when the site has none.
 - **Settings → General → Appearance** picks System, Light or Dark. It's saved
-  as `"appearance"` in `handlers.json`; the Electron build ignores it, and drops
-  it if it saves the file.
-- `handlers.json` is written with sorted keys. The content is the same and both
-  builds read it.
+  as `"appearance"` in `handlers.json`.
+- `handlers.json` is written with sorted keys.

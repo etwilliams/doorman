@@ -1,7 +1,7 @@
 import AppKit
 import SwiftUI
 
-/// The Electron build's palette, light and dark, over the window's vibrancy.
+/// The app's palette, light and dark, over the window's vibrancy.
 enum Theme {
     static let fg = dynamic(light: hex(0x16181d), dark: hex(0xf2f3f5))
     static let muted = dynamic(light: hex(0x6b7280), dark: hex(0x9aa1ad))
