@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Only the shared Doorman scheme: the package's own products (the bare
+	     executable build.sh uses, and DoormanCore) would otherwise each get one. -->
+	<key>IDEWorkspaceSharedSettings_AutocreateContextsIfNeeded</key>
+	<false/>
+</dict>
+</plist>

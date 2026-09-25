@@ -1,0 +1,330 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4578A1683F9DA853AEFA9ABA /* AppIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = C7C9A01052A55B28D9D55CEA /* AppIcon.icns */; };
+		EC3DACFA3679F0A4321A609A /* DoormanCore in Frameworks */ = {isa = PBXBuildFile; productRef = 6584FD27BA9F05A00012F42F /* DoormanCore */; };
+		CF0B8215FE94445EFF40756E /* DoormanCore in Frameworks */ = {isa = PBXBuildFile; productRef = A30475EF4C614538F8331592 /* DoormanCore */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		EB3D821B2A591FEDF4A9CB9D /* Doorman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Doorman.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C7C9A01052A55B28D9D55CEA /* AppIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = AppIcon.icns; sourceTree = "<group>"; };
+		BFC91C9C88130F89F31D0563 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		08D8029B1465BFB4309F47D1 /* DoormanCoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoormanCoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		7225F80AFECC9983759BC171 /* Doorman */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			name = Doorman;
+			path = Sources/Doorman;
+			sourceTree = "<group>";
+		};
+		0997F75DA2AB429212A199BB /* DoormanCoreTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			name = DoormanCoreTests;
+			path = Tests/DoormanCoreTests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E1EC5AD992A94AD20D3B99D2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC3DACFA3679F0A4321A609A /* DoormanCore in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2DE5B9F30DC40EB2F6F47B90 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF0B8215FE94445EFF40756E /* DoormanCore in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9AAC61C11315026720FF8497 = {
+			isa = PBXGroup;
+			children = (
+				7225F80AFECC9983759BC171 /* Doorman */,
+				EDB9CC13F031B1DAB036A4DA /* Resources */,
+				0997F75DA2AB429212A199BB /* DoormanCoreTests */,
+				8DAA7D8A0FCB879477B14131 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8DAA7D8A0FCB879477B14131 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EB3D821B2A591FEDF4A9CB9D /* Doorman.app */,
+				08D8029B1465BFB4309F47D1 /* DoormanCoreTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EDB9CC13F031B1DAB036A4DA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BFC91C9C88130F89F31D0563 /* Info.plist */,
+				C7C9A01052A55B28D9D55CEA /* AppIcon.icns */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		935A75B773859B11461DB179 /* Doorman */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 603BF7B72F589432C144F564 /* Build configuration list for PBXNativeTarget "Doorman" */;
+			buildPhases = (
+				DA4334CEC15A05DF99F4AB89 /* Sources */,
+				E1EC5AD992A94AD20D3B99D2 /* Frameworks */,
+				6E53C78500D93CA32AB68EFD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				7225F80AFECC9983759BC171 /* Doorman */,
+			);
+			name = Doorman;
+			packageProductDependencies = (
+				6584FD27BA9F05A00012F42F /* DoormanCore */,
+			);
+			productName = Doorman;
+			productReference = EB3D821B2A591FEDF4A9CB9D /* Doorman.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AC8C12E9DE1E0AD6A5825057 /* DoormanCoreTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D8742849DA6033153F5A5B62 /* Build configuration list for PBXNativeTarget "DoormanCoreTests" */;
+			buildPhases = (
+				ED8480C1615BC9B5426BBA93 /* Sources */,
+				2DE5B9F30DC40EB2F6F47B90 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				0997F75DA2AB429212A199BB /* DoormanCoreTests */,
+			);
+			name = DoormanCoreTests;
+			packageProductDependencies = (
+				A30475EF4C614538F8331592 /* DoormanCore */,
+			);
+			productName = DoormanCoreTests;
+			productReference = 08D8029B1465BFB4309F47D1 /* DoormanCoreTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7859D833CE94E4EB7847DB1F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2600;
+				LastUpgradeCheck = 2600;
+			};
+			buildConfigurationList = CA20A1DF6E0E8664FA55284B /* Build configuration list for PBXProject "Doorman" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9AAC61C11315026720FF8497;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				A582310856BEB84B600A6743 /* XCLocalSwiftPackageReference "." */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 8DAA7D8A0FCB879477B14131 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				935A75B773859B11461DB179 /* Doorman */,
+				AC8C12E9DE1E0AD6A5825057 /* DoormanCoreTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6E53C78500D93CA32AB68EFD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4578A1683F9DA853AEFA9ABA /* AppIcon.icns in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DA4334CEC15A05DF99F4AB89 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ED8480C1615BC9B5426BBA93 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		69214028F14FB9495A68175B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A4C257E961EF414F05FF46C8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		113FB3396883B95354D6097F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_HARDENED_RUNTIME = NO;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ewilliams.doorman;
+				PRODUCT_NAME = Doorman;
+			};
+			name = Debug;
+		};
+		BE79E2F880C166E8FB9F1673 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_HARDENED_RUNTIME = NO;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ewilliams.doorman;
+				PRODUCT_NAME = Doorman;
+			};
+			name = Release;
+		};
+		389E64A3BCF8D394E1682B1B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GENERATE_INFOPLIST_FILE = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ewilliams.doorman.DoormanCoreTests;
+				PRODUCT_NAME = DoormanCoreTests;
+			};
+			name = Debug;
+		};
+		54D2868E7A53798BC075E197 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GENERATE_INFOPLIST_FILE = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ewilliams.doorman.DoormanCoreTests;
+				PRODUCT_NAME = DoormanCoreTests;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CA20A1DF6E0E8664FA55284B /* Build configuration list for PBXProject "Doorman" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				69214028F14FB9495A68175B /* Debug */,
+				A4C257E961EF414F05FF46C8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		603BF7B72F589432C144F564 /* Build configuration list for PBXNativeTarget "Doorman" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				113FB3396883B95354D6097F /* Debug */,
+				BE79E2F880C166E8FB9F1673 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D8742849DA6033153F5A5B62 /* Build configuration list for PBXNativeTarget "DoormanCoreTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				389E64A3BCF8D394E1682B1B /* Debug */,
+				54D2868E7A53798BC075E197 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		A582310856BEB84B600A6743 /* XCLocalSwiftPackageReference "." */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = .;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6584FD27BA9F05A00012F42F /* DoormanCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DoormanCore;
+		};
+		A30475EF4C614538F8331592 /* DoormanCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DoormanCore;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 7859D833CE94E4EB7847DB1F /* Project object */;
+}
