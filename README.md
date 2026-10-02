@@ -1,6 +1,10 @@
+<p align="center">
+  <img src="docs/logo.png" alt="Doorman logo" width="128" height="128">
+</p>
+
 # Doorman
 
-A 1.6 MB native Swift + SwiftUI app: a picker for choosing which browser (or
+A small native Swift + SwiftUI app: a picker for choosing which browser (or
 browser profile) opens a link, with keyboard shortcuts, saved domains, private
 windows, Recent, a doorbell, a login item and a favicon cache.
 
@@ -155,3 +159,7 @@ DOORMAN_SUPPORT_DIR=/tmp/doorman-test .build/debug/Doorman https://example.com
 - **Settings → General → Appearance** picks System, Light or Dark. It's saved
   as `"appearance"` in `handlers.json`.
 - `handlers.json` is written with sorted keys.
+
+## License
+
+[MIT](LICENSE) © 2026 Dakuupa LLC
