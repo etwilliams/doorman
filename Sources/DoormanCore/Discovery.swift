@@ -29,9 +29,12 @@ public enum Discovery {
 
     static let simple: [SimpleBrowser] = [
         .init(label: "Safari", app: "/Applications/Safari.app", color: "#2e7cf6"),
-        .init(label: "Firefox", app: "/Applications/Firefox.app", color: "#ff7139"),
         .init(label: "Arc", app: "/Applications/Arc.app", color: "#ff6a6a"),
     ]
+
+    static let firefoxApp = "/Applications/Firefox.app"
+    static let firefoxBin = firefoxApp + "/Contents/MacOS/firefox"
+    static let firefoxColor = "#ff7139"
 
     public static let chromiumBinaries = Set(chromium.map(\.bin))
 
@@ -62,6 +65,26 @@ public enum Discovery {
                     command: browser.bin,
                     args: ["--profile-directory=\(profile.dir)", "{url}"]
                 ))
+            }
+        }
+
+        if exists(firefoxApp) {
+            // Firefox's own binary rather than `open -a`: `-P` reaches the right
+            // profile whether or not Firefox is running, and it hands the link to
+            // that profile's open window. With one profile there is nothing to
+            // choose, so it stays a plain "Firefox".
+            let profiles = readFirefoxProfiles(home: home, exists: exists)
+            if profiles.count < 2 {
+                handlers.append(Handler(name: "Firefox", color: firefoxColor, command: firefoxBin))
+            } else {
+                for name in profiles {
+                    handlers.append(Handler(
+                        name: "Firefox — \(name)",
+                        color: firefoxColor,
+                        command: firefoxBin,
+                        args: ["-P", name, "{url}"]
+                    ))
+                }
             }
         }
 
@@ -107,6 +130,30 @@ public enum Discovery {
                     color: swatch(fromChromeColor: info["profile_highlight_color"])
                 )
             }
+    }
+
+    /// The profile names in Firefox's profiles.ini, in file order. Its
+    /// `[ProfileN]` sections each have a `Name=`; `[General]` and the
+    /// `[InstallXXXX]` sections don't, and are skipped.
+    static func readFirefoxProfiles(home: URL, exists: (String) -> Bool) -> [String] {
+        let path = home.appendingPathComponent("Library/Application Support/Firefox/profiles.ini").path
+        guard exists(path),
+              let raw = FileManager.default.contents(atPath: path),
+              let text = String(data: raw, encoding: .utf8)
+        else { return [] }
+
+        var names: [String] = []
+        var inProfile = false
+        for line in text.split(whereSeparator: \.isNewline) {
+            let line = line.trimmingCharacters(in: .whitespaces)
+            if line.hasPrefix("[") {
+                inProfile = line.range(of: #"^\[Profile\d+\]$"#, options: .regularExpression) != nil
+            } else if inProfile, line.hasPrefix("Name=") {
+                let name = String(line.dropFirst("Name=".count))
+                if !name.isEmpty, !names.contains(name) { names.append(name) }
+            }
+        }
+        return names
     }
 
     /// How a handler names the app it launches, for showing that app's icon.

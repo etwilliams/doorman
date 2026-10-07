@@ -140,6 +140,57 @@ final class DiscoveryTests: XCTestCase {
         XCTAssertNil(Discovery.profilePicture(for: Handler(name: "Firefox", command: "/firefox"), home: home))
     }
 
+    private func firefoxHome(profilesIni: String?) throws -> URL {
+        let home = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        let dir = home.appendingPathComponent("Library/Application Support/Firefox")
+        try FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
+        if let profilesIni { try profilesIni.write(to: dir.appendingPathComponent("profiles.ini"), atomically: true, encoding: .utf8) }
+        return home
+    }
+
+    func testFirefoxProfilesReadFromProfilesIni() throws {
+        let home = try firefoxHome(profilesIni: """
+            [General]
+            StartWithLastProfile=1
+
+            [Profile0]
+            Name=default-release
+            Path=Profiles/83w5gaut.default-release
+
+            [Install2656FF1E876E9973]
+            Default=Profiles/83w5gaut.default-release
+
+            [Profile1]
+            Name=Work stuff
+            Path=Profiles/iw7svtyo.default
+            """)
+        defer { try? FileManager.default.removeItem(at: home) }
+        XCTAssertEqual(Discovery.readFirefoxProfiles(home: home, exists: { FileManager.default.fileExists(atPath: $0) }),
+                       ["default-release", "Work stuff"])
+
+        let none = try firefoxHome(profilesIni: nil)
+        defer { try? FileManager.default.removeItem(at: none) }
+        XCTAssertEqual(Discovery.readFirefoxProfiles(home: none, exists: { FileManager.default.fileExists(atPath: $0) }), [])
+    }
+
+    func testFirefoxHandlersPerProfileOrPlain() throws {
+        let app = "/Applications/Firefox.app"
+        let two = try firefoxHome(profilesIni: "[Profile0]\nName=a\n[Profile1]\nName=b\n")
+        defer { try? FileManager.default.removeItem(at: two) }
+        let multi = Discovery.discoverHandlers(home: two, exists: { $0 == app || ($0.hasPrefix(two.path) && FileManager.default.fileExists(atPath: $0)) })
+        XCTAssertEqual(multi.map(\.name), ["Firefox — a", "Firefox — b"])
+        XCTAssertEqual(multi[1].args, ["-P", "b", "{url}"])
+        XCTAssertEqual(multi[1].launchArguments(for: "https://x.com", privately: true),
+                       ["-P", "b", "-private-window", "https://x.com"])
+        XCTAssertEqual(Discovery.appReference(for: multi[0]), .path(app))
+
+        let one = try firefoxHome(profilesIni: "[Profile0]\nName=a\n")
+        defer { try? FileManager.default.removeItem(at: one) }
+        let single = Discovery.discoverHandlers(home: one, exists: { $0 == app || ($0.hasPrefix(one.path) && FileManager.default.fileExists(atPath: $0)) })
+        XCTAssertEqual(single.map(\.name), ["Firefox"])
+        XCTAssertEqual(single[0].args, ["{url}"])
+    }
+
     func testHslMatchesJavaScript() {
         // Values from handlers.js' hslToHex for the same inputs.
         XCTAssertEqual(Discovery.hslToHex(0, 0.62, 0.58), "#d65151")
