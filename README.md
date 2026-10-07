@@ -19,10 +19,27 @@ Needs Xcode (or its command line tools) with Swift 5.10+, on macOS 14 or later.
 ```bash
 ./build.sh            # builds build/Doorman.app
 ./build.sh --install  # ...and copies it to /Applications
+./build.sh --release  # signed, notarized build/Doorman.dmg (maintainers)
 ```
 
 Then open it once, go to **Settings → General → Register as default browser**,
 and confirm when macOS asks.
+
+### Release build
+
+`./build.sh --release` signs the app with a Developer ID certificate and the
+hardened runtime, notarizes it with Apple, staples the ticket and packages it as
+`build/Doorman.dmg`. It needs the Developer ID Application certificate in your
+keychain and a `.notarize.env` file in the project root (gitignored):
+
+```
+APPLE_ID=you@example.com
+APPLE_TEAM_ID=XXXXXXXXXX
+APPLE_APP_PASSWORD=xxxx-xxxx-xxxx-xxxx   # app-specific password from appleid.apple.com
+```
+
+The signing identity name is set at the top of the `--release` block in
+`build.sh`; forks should change it to their own.
 
 ## Xcode
 
