@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="docs/logo.png" alt="Doorman logo" width="128" height="128">
+  <img src="docs/logo.png" alt="Link Doorman logo" width="128" height="128">
 </p>
 
-# Doorman
+# Link Doorman
 
 A small native Swift + SwiftUI app: a picker for choosing which browser (or
 browser profile) opens a link, with keyboard shortcuts, saved domains, private
@@ -10,7 +10,7 @@ windows, Recent, a doorbell, a login item and a favicon cache.
 
 It reads and writes
 `~/Library/Application Support/Doorman/handlers.json` and a `favicons/` folder,
-under the bundle id `com.ewilliams.doorman`.
+under the bundle id `com.dakuupa.doorman`.
 
 ## Build
 
@@ -82,7 +82,7 @@ DOORMAN_SUPPORT_DIR=/tmp/doorman-test .build/debug/Doorman https://example.com
 | `Sources/Doorman/StatusItemController.swift` | Menu bar icon and its Recent menu. |
 | `Sources/Doorman/Launcher.swift` | `posix_spawnp`, no shell, URL as its own argv entry, own session. |
 | `Sources/Doorman/PageTitles.swift` | Fetching page titles for the picker, when turned on. |
-| `Sources/Doorman/ServiceProvider.swift` | The "Open Links with Doorman" service. |
+| `Sources/Doorman/ServiceProvider.swift` | The "Open Links with Link Doorman" service. |
 | `Sources/Doorman/SourceApps.swift` | Which app sent a link, and its name and icon. |
 | `Sources/Doorman/HandlerIcons.swift` | App icons and Chromium profile photos for handlers. |
 | `Sources/Doorman/Favicons.swift` | Fetching icons from each site into the cache folder. |
@@ -100,7 +100,7 @@ DOORMAN_SUPPORT_DIR=/tmp/doorman-test .build/debug/Doorman https://example.com
 - The URL in the picker isn't selectable text, so `⌘C` always copies the whole
   link.
 - The menu bar icon opens its menu on click, as native status items do;
-  **Show Doorman** is the first item.
+  **Show Link Doorman** is the first item.
 - **Page titles**, opt-in under **Settings → General → Show page titles in the
   picker**. The picker shows the page's title (its `<title>`, or `og:title`)
   between the host and the URL. It's off by default because it means loading
@@ -126,7 +126,7 @@ DOORMAN_SUPPORT_DIR=/tmp/doorman-test .build/debug/Doorman https://example.com
   you were. Click away and it stops floating and waits behind like a normal
   window. Settings is the exception: opening it activates Doorman, since its
   text fields need Doorman's Edit menu.
-- **Open Links with Doorman** in the Services menu. Select text in any app,
+- **Open Links with Link Doorman** in the Services menu. Select text in any app,
   then right-click it or use the app menu → **Services → Open Links with
   Doorman**. Every web link in the selection goes through Doorman as if it had
   been clicked, up to 20 at a time: saved rules apply, and the rest queue in the

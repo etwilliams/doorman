@@ -3,3 +3,6 @@ build/
 .swiftpm/
 xcuserdata/
 DerivedData/
+
+# Notarization credentials (see build.sh --release)
+.notarize.env

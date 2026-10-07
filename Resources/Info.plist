@@ -5,17 +5,17 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>Doorman</string>
+	<string>Link Doorman</string>
 	<key>CFBundleExecutable</key>
 	<string>Doorman</string>
 	<key>CFBundleIconFile</key>
 	<string>AppIcon</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.ewilliams.doorman</string>
+	<string>com.dakuupa.doorman</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>Doorman</string>
+	<string>Link Doorman</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -52,7 +52,7 @@
 			<key>NSMenuItem</key>
 			<dict>
 				<key>default</key>
-				<string>Open Links with Doorman</string>
+				<string>Open Links with Link Doorman</string>
 			</dict>
 			<key>NSMessage</key>
 			<string>openLinks</string>

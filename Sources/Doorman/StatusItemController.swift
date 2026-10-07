@@ -36,7 +36,7 @@ final class StatusItemController: NSObject, NSMenuDelegate {
 
         let item = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
         item.button?.image = DoorGeometry.trayImage()
-        item.button?.toolTip = "Doorman"
+        item.button?.toolTip = "Link Doorman"
         let menu = NSMenu()
         menu.delegate = self
         item.menu = menu
@@ -46,7 +46,7 @@ final class StatusItemController: NSObject, NSMenuDelegate {
     // Rebuilt on every open, so Recent is always current.
     func menuNeedsUpdate(_ menu: NSMenu) {
         menu.removeAllItems()
-        menu.addItem(ActionMenuItem("Show Doorman") { [model] in model.window?.reveal() })
+        menu.addItem(ActionMenuItem("Show Link Doorman") { [model] in model.window?.reveal() })
 
         let recentItem = NSMenuItem(title: "Recent", action: nil, keyEquivalent: "")
         let submenu = NSMenu()
@@ -77,7 +77,7 @@ final class StatusItemController: NSObject, NSMenuDelegate {
 
         menu.addItem(ActionMenuItem("Settings…") { [model] in model.openSettings() })
         menu.addItem(.separator())
-        menu.addItem(ActionMenuItem("Quit Doorman", key: "q") { NSApp.terminate(nil) })
+        menu.addItem(ActionMenuItem("Quit Link Doorman", key: "q") { NSApp.terminate(nil) })
     }
 
     /// Host and path, without the scheme and query, cut to fit a menu.

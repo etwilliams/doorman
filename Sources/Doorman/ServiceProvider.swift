@@ -1,7 +1,7 @@
 import AppKit
 import DoormanCore
 
-/// Backs "Open Links with Doorman" in the Services menu (NSServices in
+/// Backs "Open Links with Link Doorman" in the Services menu (NSServices in
 /// Info.plist): the links in whatever text is selected, in any app, go through
 /// Doorman as if they had been clicked.
 @MainActor

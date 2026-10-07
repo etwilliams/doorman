@@ -459,10 +459,10 @@ private struct GeneralPanel: View {
             }
             .padding(.bottom, 12)
 
-            Check("Keep Doorman in the menu bar", isOn: menuBar) { model.setMenuBar($0) }
-            Caption { Note("Off: Doorman quits when you close this window, and starts again the next time you click a link.") }
+            Check("Keep Link Doorman in the menu bar", isOn: menuBar) { model.setMenuBar($0) }
+            Caption { Note("Off: Link Doorman quits when you close this window, and starts again the next time you click a link.") }
 
-            Check("Open Doorman at login", isOn: login.enabled) { model.setOpenAtLogin($0) }
+            Check("Open Link Doorman at login", isOn: login.enabled) { model.setOpenAtLogin($0) }
                 .disabled(loginDisabled)
                 .opacity(loginDisabled ? 0.55 : 1)
             Caption { loginNote(login: login, menuBar: menuBar) }
@@ -477,7 +477,7 @@ private struct GeneralPanel: View {
 
             Check("Show page titles in the picker", isOn: model.data.pageTitles) { model.setPageTitles($0) }
             Caption {
-                Note("Doorman loads each link's page, without cookies, before you choose. A one-time link, such as a sign-in or password reset link, can be used up by that and then fail in your browser.")
+                Note("Link Doorman loads each link's page, without cookies, before you choose. A one-time link, such as a sign-in or password reset link, can be used up by that and then fail in your browser.")
             }
 
             Check("Also copy the URL to the clipboard when opening", isOn: model.data.copyOnOpen) {
@@ -498,7 +498,7 @@ private struct GeneralPanel: View {
         if !login.available {
             Note("Only available in the installed app.")
         } else if !menuBar {
-            Note("Needs the menu bar icon: without it, Doorman quits when it has nothing to show.")
+            Note("Needs the menu bar icon: without it, Link Doorman quits when it has nothing to show.")
         } else if login.needsApproval {
             HStack(spacing: 0) {
                 Note("macOS needs you to allow it in ").fixedSize()
@@ -508,7 +508,7 @@ private struct GeneralPanel: View {
                 Note(".")
             }
         } else {
-            Note("Doorman works without this: macOS starts it when you click your first link, which just takes a moment longer.")
+            Note("Link Doorman works without this: macOS starts it when you click your first link, which just takes a moment longer.")
         }
     }
 }
@@ -558,7 +558,7 @@ private struct AboutPanel: View {
             HStack(spacing: 14) {
                 AppIconView().frame(width: 56, height: 56)
                 VStack(alignment: .leading, spacing: 0) {
-                    Text("Doorman").font(.system(size: 16, weight: .semibold)).kerning(-0.16)
+                    Text("Link Doorman").font(.system(size: 16, weight: .semibold)).kerning(-0.16)
                     Text(about.map { "Version \($0.version)\($0.packaged ? "" : " (development)")" } ?? "")
                         .font(.system(size: 11.5))
                         .foregroundStyle(Theme.muted)
