@@ -92,18 +92,18 @@ enum MainMenu {
     static func build(model: AppModel) -> NSMenu {
         let main = NSMenu()
 
-        let app = NSMenu(title: "Link Doorman")
-        app.addItem(ActionMenuItem("About Link Doorman") { model.openSettings(tab: .about) })
+        let app = NSMenu(title: "Doorman")
+        app.addItem(ActionMenuItem("About Doorman") { model.openSettings(tab: .about) })
         app.addItem(.separator())
         app.addItem(ActionMenuItem("Settings…", key: ",") { model.openSettings() })
         app.addItem(.separator())
-        app.addItem(withTitle: "Hide Link Doorman", action: #selector(NSApplication.hide(_:)), keyEquivalent: "h")
+        app.addItem(withTitle: "Hide Doorman", action: #selector(NSApplication.hide(_:)), keyEquivalent: "h")
         let others = app.addItem(withTitle: "Hide Others",
                                  action: #selector(NSApplication.hideOtherApplications(_:)), keyEquivalent: "h")
         others.keyEquivalentModifierMask = [.command, .option]
         app.addItem(withTitle: "Show All", action: #selector(NSApplication.unhideAllApplications(_:)), keyEquivalent: "")
         app.addItem(.separator())
-        app.addItem(withTitle: "Quit Link Doorman", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
+        app.addItem(withTitle: "Quit Doorman", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
         main.addItem(submenu(app))
 
         // Needed for ⌘C/⌘V/⌘A in the Settings fields.

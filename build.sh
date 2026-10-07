@@ -40,7 +40,7 @@ if [[ "${1:-}" == "--release" ]]; then
   cp -R "$APP" "$STAGE/"
   ln -s /Applications "$STAGE/Applications"
   rm -f "$DMG"
-  hdiutil create -volname "Link Doorman" -srcfolder "$STAGE" -ov -format UDZO "$DMG"
+  hdiutil create -volname "Doorman" -srcfolder "$STAGE" -ov -format UDZO "$DMG"
   rm -rf "$STAGE"
   codesign --force --sign "$IDENTITY" --timestamp "$DMG"
   xcrun notarytool submit "$DMG" "${NOTARY[@]}" --wait
@@ -58,7 +58,7 @@ if [[ "${1:-}" == "--install" ]]; then
   cp -R "$APP" /Applications/
   # Make sure LaunchServices sees the new bundle as the http/https handler.
   /System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -f /Applications/Doorman.app
-  # ...and that the Services menu picks up "Open Links with Link Doorman".
+  # ...and that the Services menu picks up "Open Links with Doorman".
   /System/Library/CoreServices/pbs -update
   echo "Installed to /Applications/Doorman.app"
 fi

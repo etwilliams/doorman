@@ -27,7 +27,7 @@ private struct TitleStrip: View {
             DoorMark(color: Theme.muted)
                 .frame(width: 13, height: 13)
                 .opacity(0.9)
-            Text("Link Doorman")
+            Text("Doorman")
                 .font(.system(size: 11.5, weight: .semibold))
                 .kerning(0.1)
         }

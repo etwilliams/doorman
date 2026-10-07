@@ -7,3 +7,7 @@ DerivedData/
 # Notarization credentials (see build.sh --release)
 .notarize.env
 .DS_Store
+
+# Working notes (the README logo is kept)
+docs/*
+!docs/logo.png

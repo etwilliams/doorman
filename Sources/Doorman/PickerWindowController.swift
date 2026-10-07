@@ -39,7 +39,7 @@ final class PickerWindowController: NSObject, NSWindowDelegate {
         window = panel
         super.init()
 
-        window.title = "Link Doorman"
+        window.title = "Doorman"
         window.titleVisibility = .hidden
         window.titlebarAppearsTransparent = true
         window.isReleasedWhenClosed = false
