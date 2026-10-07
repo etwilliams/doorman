@@ -767,7 +767,7 @@ final class AppModel {
     }
 
     func refreshAbout() {
-        let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "1.0.0"
+        let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "1.1.0"
         // Home shortened to ~, so the path fits the row without truncation.
         let home = FileManager.default.homeDirectoryForCurrentUser.path
         let folder = supportDirectory.path.hasPrefix(home)
